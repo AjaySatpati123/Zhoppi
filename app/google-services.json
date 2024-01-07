@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "682788896830",
+    "project_id": "zhoppi-102eb-2024",
+    "storage_bucket": "zhoppi-102eb-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682788896830:android:f321cee91a504ac2d9116f",
+        "android_client_info": {
+          "package_name": "com.example.zhoppi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682788896830-m2v8skeme8lp07l9oboi4ci4qpa6me0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zhoppi",
+            "certificate_hash": "82ecdd082a1c549c4d9697c7001990a686e1798d"
+          }
+        },
+        {
+          "client_id": "682788896830-o11ka23n68vrf3rblj7f7mn2gme2t5ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM5idMqmre8gj4XGOO7T4dG1nb7HnOg5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682788896830-o11ka23n68vrf3rblj7f7mn2gme2t5ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

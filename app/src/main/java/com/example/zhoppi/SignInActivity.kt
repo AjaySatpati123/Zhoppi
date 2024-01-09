@@ -18,11 +18,6 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
         auth = FirebaseAuth.getInstance()
 
-        findViewById<TextView>(R.id.register).setOnClickListener{
-            startActivity(Intent(this, RegisterActivity::class.java))
-            finish()
-        }
-
         findViewById<Button>(R.id.signIn).setOnClickListener {
             val email = findViewById<EditText>(R.id.emailSignIn).text.toString()
             val password = findViewById<EditText>(R.id.passwordSignIn).text.toString()
@@ -37,6 +32,11 @@ class SignInActivity : AppCompatActivity() {
                     Toast.makeText(this, it.localizedMessage, Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        findViewById<TextView>(R.id.register).setOnClickListener{
+            startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
     }
 }

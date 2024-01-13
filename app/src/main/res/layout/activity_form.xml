@@ -25,15 +25,15 @@
         android:id="@+id/contactNo"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:text="@string/contact_no"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintHorizontal_bias="0.233"
         app:layout_constraintStart_toStartOf="parent"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <EditText
@@ -68,7 +68,7 @@
         tools:ignore="LabelFor" />
 
     <EditText
-        android:id="@+id/shopAddress"
+        android:id="@+id/shopStreet"
         android:layout_width="142dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
@@ -106,12 +106,12 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:text="@string/shop_state"
-        app:layout_constraintEnd_toStartOf="@+id/shopPincode"
-        app:layout_constraintTop_toBottomOf="@+id/shopAddress"
+        app:layout_constraintEnd_toStartOf="@+id/pincode"
+        app:layout_constraintTop_toBottomOf="@+id/shopStreet"
         tools:ignore="LabelFor" />
 
     <EditText
-        android:id="@+id/shopPincode"
+        android:id="@+id/pincode"
         android:layout_width="142dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"

@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Zhoppi"
         tools:targetApi="31">
         <activity
+            android:name=".SellerDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".BuyerDashboard"
+            android:exported="false" />
+        <activity
             android:name=".FormActivity"
             android:exported="false" />
         <activity

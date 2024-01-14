@@ -53,6 +53,8 @@ class FormActivity : AppCompatActivity() {
                 val userId = FirebaseAuth.getInstance().currentUser!!.uid
                 db.collection("user").document(userId).set(userMap).addOnSuccessListener {
                     Toast.makeText(this, "Buyer Account Created", Toast.LENGTH_SHORT).show()
+                    val auth = FirebaseAuth.getInstance()
+                    auth.signOut()
                     startActivity(Intent(this, SignInActivity::class.java))
                     finish()
                 }.addOnFailureListener {
@@ -103,6 +105,8 @@ class FormActivity : AppCompatActivity() {
                 val userId = FirebaseAuth.getInstance().currentUser!!.uid
                 db.collection("user").document(userId).set(userMap).addOnSuccessListener {
                     Toast.makeText(this, "Seller Account Created", Toast.LENGTH_SHORT).show()
+                    val auth = FirebaseAuth.getInstance()
+                    auth.signOut()
                     startActivity(Intent(this, SignInActivity::class.java))
                     finish()
                 }.addOnFailureListener {

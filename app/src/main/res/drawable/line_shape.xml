@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Item 1: Background (if needed) -->
+    <item android:drawable="@android:color/transparent" />
+
+    <!-- Item 2: Line -->
+    <item>
+        <shape android:shape="line">
+            <!-- Set the stroke with a thickness of 4dp and a color -->
+            <stroke
+                android:width="6dp"
+                android:color="#000000" />
+        </shape>
+    </item>
+</layer-list>

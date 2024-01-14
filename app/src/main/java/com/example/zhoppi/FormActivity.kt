@@ -55,7 +55,7 @@ class FormActivity : AppCompatActivity() {
                     Toast.makeText(this, "Buyer Account Created", Toast.LENGTH_SHORT).show()
                     val auth = FirebaseAuth.getInstance()
                     auth.signOut()
-                    startActivity(Intent(this, SignInActivity::class.java))
+                    startActivity(Intent(this, WelcomeScreenActivity::class.java))
                     finish()
                 }.addOnFailureListener {
                     Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show()
@@ -107,7 +107,7 @@ class FormActivity : AppCompatActivity() {
                     Toast.makeText(this, "Seller Account Created", Toast.LENGTH_SHORT).show()
                     val auth = FirebaseAuth.getInstance()
                     auth.signOut()
-                    startActivity(Intent(this, SignInActivity::class.java))
+                    startActivity(Intent(this, WelcomeScreenActivity::class.java))
                     finish()
                 }.addOnFailureListener {
                     Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show()

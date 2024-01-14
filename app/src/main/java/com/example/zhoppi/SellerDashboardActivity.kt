@@ -5,7 +5,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
-class SellerDashboard : AppCompatActivity() {
+class SellerDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_dashboard)

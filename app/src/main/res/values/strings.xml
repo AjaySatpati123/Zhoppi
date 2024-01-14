@@ -21,5 +21,8 @@
     <string name="shop_gstin">Shop GSTIN</string>
     <string name="let_s_go">Let\'s Go</string>
     <string name="sign_in_with_google">Sign In With Google</string>
+    <string name="welcome_aboard">Welcome Aboard!</string>
+    <string name="let_s_do_some">Let\'s Do Some</string>
+    <string name="business">Business!</string>
 
 </resources>

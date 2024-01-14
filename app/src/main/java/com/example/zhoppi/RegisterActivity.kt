@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT)
                                 .show()
-                            startActivity(Intent(this, UserType::class.java))
+                            startActivity(Intent(this, UserTypeActivity::class.java))
                             finish()
                         }
                     }.addOnFailureListener {
@@ -67,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, UserType::class.java))
+                    startActivity(Intent(this, UserTypeActivity::class.java))
                     finish()
                 }
             }.addOnFailureListener {

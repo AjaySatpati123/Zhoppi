@@ -65,10 +65,10 @@ class SignInActivity : AppCompatActivity() {
             if (documentSnapshot.exists()) {
                 val userTypes = documentSnapshot.getString("type")
                 if (userTypes == "buyer") {
-                    startActivity(Intent(this, BuyerDashboard::class.java))
+                    startActivity(Intent(this, BuyerDashboardActivity::class.java))
                     finish()
                 } else if (userTypes == "seller") {
-                    startActivity(Intent(this, SellerDashboard::class.java))
+                    startActivity(Intent(this, SellerDashboardActivity::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Please Register Again", Toast.LENGTH_SHORT).show()

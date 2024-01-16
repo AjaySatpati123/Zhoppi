@@ -1,12 +1,14 @@
 package com.example.zhoppi
 
+import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AccelerateInterpolator
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.zhoppi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +19,13 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
-        },3000)
+        },4000)
+
+        val textView = findViewById<TextView>(R.id.tagLine)
+        textView.alpha = 0f
+        val fadeInAnimator = ObjectAnimator.ofFloat(textView, "alpha", 0f, 1f)
+        fadeInAnimator.duration = 1000
+        fadeInAnimator.interpolator = AccelerateInterpolator()
+        fadeInAnimator.start()
     }
 }

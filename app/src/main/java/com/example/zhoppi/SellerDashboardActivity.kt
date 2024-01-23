@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,31 +31,33 @@ class SellerDashboardActivity : AppCompatActivity() {
         }.addOnFailureListener {
             Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show()
         }
+
         findViewById<ImageButton>(R.id.logoutSeller).setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Logout")
-            builder.setMessage("Are you sure you want to logout?")
-            builder.setPositiveButton("Yes") { _, _ ->
-                FirebaseAuth.getInstance().signOut()
-                startActivity(Intent(this, SignInActivity::class.java))
-                finish()
-            }
-            builder.setNegativeButton("No", null)
+            logOut()
+        }
 
-            val dialog = builder.create()
-            dialog.show()
-
-            // Change background color
-            dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_background)
-
-            // Change title color
-            val titleView = dialog.findViewById<TextView>(android.R.id.title)
-            titleView?.setTextColor(ContextCompat.getColor(this, R.color.black))
-
-            // Change message color
-            val messageView = dialog.findViewById<TextView>(android.R.id.message)
-            messageView?.setTextColor(ContextCompat.getColor(this, R.color.grey))
+        findViewById<ImageView>(R.id.addItem).setOnClickListener {
+            startActivity(Intent(this, AddItemActivity::class.java))
+            finish()
         }
     }
 
+    private fun logOut(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Are you sure you want to logout?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+        }
+        builder.setNegativeButton("No", null)
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_background)
+        val titleView = dialog.findViewById<TextView>(android.R.id.title)
+        titleView?.setTextColor(ContextCompat.getColor(this, R.color.black))
+        val messageView = dialog.findViewById<TextView>(android.R.id.message)
+        messageView?.setTextColor(ContextCompat.getColor(this, R.color.grey))
+    }
 }

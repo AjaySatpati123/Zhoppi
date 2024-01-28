@@ -82,35 +82,24 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="@string/price"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/negotiable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="Price"
         tools:ignore="LabelFor" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <Spinner
+        android:id="@+id/negotiable"
         android:layout_width="210dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="40dp"
+        android:scrollbarSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/addProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
-
-        <RadioButton
-            android:id="@+id/negotiable"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="@string/negotiable" />
-
-        <RadioButton
-            android:id="@+id/nonNegotiable"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="@string/non_negotiable" />
-    </RadioGroup>
+    </Spinner>
 
     <Button
         android:id="@+id/addProduct"

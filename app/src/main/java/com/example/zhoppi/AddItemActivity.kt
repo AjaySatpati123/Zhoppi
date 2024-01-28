@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -32,6 +31,7 @@ class AddItemActivity : AppCompatActivity() {
     private val REQUEST_IMAGE_CAPTURE = 100
     private var imageUri: Uri? = null
     private var selectedValue: String = ""
+    private var negotiable: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
@@ -48,6 +48,21 @@ class AddItemActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 selectedValue = "Others"
+            }
+        }
+
+        val spinner2: Spinner = findViewById(R.id.negotiable)
+        val values2 = arrayOf("Yes", "no")
+        val adapter2 = ArrayAdapter(this, android.R.layout.simple_spinner_item, values2)
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner2.adapter = adapter2
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                negotiable = values2[position]
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                negotiable = "Yes"
             }
         }
 
@@ -77,14 +92,11 @@ class AddItemActivity : AppCompatActivity() {
             val uid = FirebaseAuth.getInstance().currentUser?.uid
             val map = addProduct()
             if (uid != null) {
-                // Generate a new document ID for the product
                 val newProductId = db.collection("product").document(uid).collection("products").document().id
-
-                // Store the product in the 'products' subcollection of the user's document
                 db.collection("product").document(uid).collection("products").document(newProductId)
                     .set(map, SetOptions.merge())
                     .addOnSuccessListener {
-                        map["productId"]?.let { it1 -> uploadImage(it1) }
+                        uploadImage(newProductId)
                     }
                     .addOnFailureListener {
                         Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
@@ -115,16 +127,7 @@ class AddItemActivity : AppCompatActivity() {
         val sItemCategory = selectedValue
         val sDescription = findViewById<EditText>(R.id.description).text.toString()
         val sPrice = findViewById<EditText>(R.id.price).text.toString()
-        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-        var sNegotiable: String? = null
-
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            sNegotiable = if (checkedId == R.id.negotiable) {
-                "yes"
-            } else {
-                "no"
-            }
-        }
+        val sNegotiable = negotiable
         return hashMapOf(
             "productId" to sProductId,
             "itemName" to sItemName,
@@ -144,7 +147,7 @@ class AddItemActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
-    fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
+    private fun getImageUri(inContext: Context, inImage: Bitmap): Uri {
         val bytes = ByteArrayOutputStream()
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path = MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)

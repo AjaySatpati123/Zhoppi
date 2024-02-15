@@ -39,5 +39,7 @@
     <string name="negotiable">Negotiable</string>
     <string name="non_negotiable">Non-Negotiable</string>
     <string name="add">Add</string>
+    <string name="search_shop">Search Shop</string>
+    <string name="search_item">Search Item</string>
 
 </resources>

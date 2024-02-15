@@ -3,8 +3,10 @@ package com.example.zhoppi
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -37,8 +39,22 @@ class BuyerDashboardActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.search).setOnClickListener {
-            startActivity(Intent(this, SearchActivity::class.java))
-            finish()
+            val popup = PopupMenu(this, it, Gravity.END)
+            // Inflate the menu from xml
+            popup.menuInflater.inflate(R.menu.search_menu, popup.menu)
+            // Set Click Listener
+            popup.setOnMenuItemClickListener { menuItem ->
+                val intent = when (menuItem.itemId) {
+                    R.id.search_shop -> Intent(this, SearchShopActivity::class.java)
+                    R.id.search_item -> Intent(this, SearchItemActivity::class.java)
+                    else -> return@setOnMenuItemClickListener false
+                }
+                startActivity(intent)
+                finish()
+                true
+            }
+            // Show the PopupMenu
+            popup.show()
         }
     }
     private fun logOut(){

@@ -22,6 +22,7 @@ class SearchItemActivity : AppCompatActivity() {
 
         val gridView = findViewById<GridView>(R.id.itemGridView)
         val searchView = findViewById<SearchView>(R.id.itemSearchView)
+        searchView.isIconified = false
 
         CoroutineScope(Dispatchers.Main).launch {
             try {

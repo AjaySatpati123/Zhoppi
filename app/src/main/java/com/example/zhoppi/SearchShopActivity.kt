@@ -15,6 +15,7 @@ class SearchShopActivity : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
         val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.isIconified = false
         val gridView = findViewById<GridView>(R.id.gridView)
 
         var documents: List<DocumentSnapshot> = listOf()

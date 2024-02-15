@@ -2,9 +2,9 @@ package com.example.zhoppi
 
 import android.os.Bundle
 import android.widget.GridView
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 

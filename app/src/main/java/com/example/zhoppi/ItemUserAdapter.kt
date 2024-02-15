@@ -53,7 +53,6 @@ class ItemUserAdapter (private val context: Context, private val layoutInflater:
                     val shopState = address["shopState"] as String
                     val pinCode = address["pinCode"] as String
                     addressTextView.text = "Address - $shopStreet, $shopCity, $shopState, $pinCode"
-                    Toast.makeText(context, "done", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener { exception ->
                 Toast.makeText(context, exception.localizedMessage, Toast.LENGTH_SHORT).show()
             }

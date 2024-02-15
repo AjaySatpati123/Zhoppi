@@ -1,10 +1,10 @@
 package com.example.zhoppi
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.GridView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.firestore
@@ -21,11 +21,11 @@ class SearchItemActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search_item)
 
         val gridView = findViewById<GridView>(R.id.itemGridView)
+        val searchView = findViewById<SearchView>(R.id.itemSearchView)
 
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val result = db.collectionGroup("products").get().await()
-                Toast.makeText(this@SearchItemActivity, "Number of documents in 'products' collection group: ${result.size()}", Toast.LENGTH_SHORT).show()
                 products.addAll(result.documents)
                 val adapter = ItemUserAdapter(this@SearchItemActivity, layoutInflater, products)
                 gridView.adapter = adapter
@@ -34,7 +34,27 @@ class SearchItemActivity : AppCompatActivity() {
             }
         }
 
-        Log.d("Products", products.toString())
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                val filteredList = products.filter { product ->
+                    val name = product.getString("itemName") ?: ""
+                    val category = product.getString("itemCategory") ?: ""
+                    val price = product.getString("price") ?: ""
+                    name.contains(newText, ignoreCase = true)||
+                            category.contains(newText, ignoreCase = true)||
+                            price.contains(newText, ignoreCase = true)
+                }
+
+                val adapter = ItemUserAdapter(this@SearchItemActivity, layoutInflater, filteredList)
+                gridView.adapter = adapter
+
+                return false
+            }
+        })
 
         gridView.setOnItemClickListener { parent, view, position, id ->
             val product = parent.getItemAtPosition(position) as DocumentSnapshot

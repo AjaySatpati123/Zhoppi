@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".SearchItemActivity">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/itemSearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -3,6 +3,7 @@ package com.example.zhoppi
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -34,6 +35,11 @@ class SellerDashboardActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.logoutSeller).setOnClickListener {
             logOut()
+        }
+
+        findViewById<Button>(R.id.showMore).setOnClickListener {
+            startActivity(Intent(this, ShowAllProductActivity::class.java))
+            finish()
         }
 
         findViewById<ImageView>(R.id.addItem).setOnClickListener {

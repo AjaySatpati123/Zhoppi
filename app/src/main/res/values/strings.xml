@@ -41,5 +41,8 @@
     <string name="add">Add</string>
     <string name="search_shop">Search Shop</string>
     <string name="search_item">Search Item</string>
+    <string name="all_products">All Products</string>
+    <string name="show_more">Show More</string>
+    <string name="see_more">See More</string>
 
 </resources>

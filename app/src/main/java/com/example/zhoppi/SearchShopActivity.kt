@@ -1,8 +1,8 @@
 package com.example.zhoppi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.google.firebase.firestore.DocumentSnapshot
@@ -60,9 +60,12 @@ class SearchShopActivity : AppCompatActivity() {
             }
         })
 
-        gridView.setOnItemClickListener { parent, view, position, id ->
+        gridView.setOnItemClickListener { parent, _, position, _ ->
             val document = parent.getItemAtPosition(position) as DocumentSnapshot
-            Toast.makeText(applicationContext, "UID: ${document.id}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AllProductsActivity::class.java)
+            intent.putExtra("id", document.id)
+            startActivity(intent)
+            finish()
         }
     }
 }

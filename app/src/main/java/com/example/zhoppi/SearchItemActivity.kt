@@ -1,5 +1,6 @@
 package com.example.zhoppi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import android.widget.Toast
@@ -57,9 +58,14 @@ class SearchItemActivity : AppCompatActivity() {
             }
         })
 
-        gridView.setOnItemClickListener { parent, view, position, id ->
+        gridView.setOnItemClickListener { parent, _, position, _ ->
             val product = parent.getItemAtPosition(position) as DocumentSnapshot
-            Toast.makeText(applicationContext, "UID: ${product.id}", Toast.LENGTH_SHORT).show()
+            val uid = product.getString("uid")
+            val intent = Intent(this, ItemViewBuyerActivity::class.java)
+            intent.putExtra("id", uid)
+            intent.putExtra("pid", product.id)
+            startActivity(intent)
+            finish()
         }
     }
 }

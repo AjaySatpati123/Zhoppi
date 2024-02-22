@@ -44,5 +44,7 @@
     <string name="all_products">All Products</string>
     <string name="show_more">Show More</string>
     <string name="see_more">See More</string>
+    <string name="item_image">Item Image</string>
+    <string name="chat_now">Chat Now</string>
 
 </resources>

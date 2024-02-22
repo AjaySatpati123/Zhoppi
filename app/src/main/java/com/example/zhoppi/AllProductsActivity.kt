@@ -1,5 +1,6 @@
 package com.example.zhoppi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import android.widget.TextView
@@ -53,7 +54,12 @@ class AllProductsActivity : AppCompatActivity() {
 
         }
         gridView.setOnItemClickListener { parent, _, position, _ ->
-            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
+            val document = parent.getItemAtPosition(position) as DocumentSnapshot
+            val intent = Intent(this, ItemViewBuyerActivity::class.java)
+            intent.putExtra("id", id)
+            intent.putExtra("pid", document.id)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -222,4 +222,11 @@ class AddItemActivity : AppCompatActivity() {
             MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
         return Uri.parse(path)
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, SellerDashboardActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        finish()
+    }
 }

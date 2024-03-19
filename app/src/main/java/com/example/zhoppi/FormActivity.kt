@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.firestore
 
 class FormActivity : AppCompatActivity() {
     private var db = Firebase.firestore
+    private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
@@ -50,13 +52,25 @@ class FormActivity : AppCompatActivity() {
                     "username" to sUserName,
                     "type" to sType
                 )
+
                 val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
                 db.collection("user").document(userId).set(userMap).addOnSuccessListener {
                     Toast.makeText(this, "Buyer Account Created", Toast.LENGTH_SHORT).show()
-                    val auth = FirebaseAuth.getInstance()
-                    auth.signOut()
-                    startActivity(Intent(this, WelcomeScreenActivity::class.java))
-                    finish()
+
+//                    databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId)
+//                    databaseReference.child("ids").setValue(userId)
+//                    databaseReference.child("name").setValue(sName).addOnCompleteListener {
+//                        if(it.isSuccessful){
+//                            Toast.makeText(this, "Added to realtime database", Toast.LENGTH_SHORT).show()
+                            val auth = FirebaseAuth.getInstance()
+                            auth.signOut()
+                            startActivity(Intent(this, WelcomeScreenActivity::class.java))
+                            finish()
+//                        }else{
+//                            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
                 }.addOnFailureListener {
                     Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show()
                 }
@@ -65,10 +79,11 @@ class FormActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun seller(){
         val letsGoButton = findViewById<Button>(R.id.letsGo)
         letsGoButton.setOnClickListener {
-            val sName = findViewById<EditText>(R.id.name).text.toString()
+            val sName = findViewById< EditText>(R.id.name).text.toString()
             val sContactNo = findViewById<EditText>(R.id.contactNo).text.toString()
             val sUserName = findViewById<EditText>(R.id.username).text.toString()
             val sType = "seller"

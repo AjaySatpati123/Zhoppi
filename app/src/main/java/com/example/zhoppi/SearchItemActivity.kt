@@ -68,4 +68,11 @@ class SearchItemActivity : AppCompatActivity() {
             finish()
         }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, BuyerDashboardActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        finish()
+    }
 }

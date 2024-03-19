@@ -1,5 +1,6 @@
 package com.example.zhoppi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,5 +25,12 @@ class ShowAllProductActivity : AppCompatActivity() {
                 val adapter = ProductsAdapter(layoutInflater, documents)
                 gridView.adapter = adapter
             }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, SellerDashboardActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        finish()
     }
 }

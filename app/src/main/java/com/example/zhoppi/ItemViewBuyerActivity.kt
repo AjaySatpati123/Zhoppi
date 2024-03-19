@@ -60,6 +60,10 @@ class ItemViewBuyerActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.openChat).setOnClickListener{
+
+        }
+
         findViewById<Button>(R.id.seeMore).setOnClickListener {
             val intent = Intent(this, AllProductsActivity::class.java)
             intent.putExtra("id", id)
@@ -69,5 +73,12 @@ class ItemViewBuyerActivity : AppCompatActivity() {
     }
     private fun dpToPx(dp: Int, context: Context): Int {
         return (dp * context.resources.displayMetrics.density).toInt()
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, BuyerDashboardActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        finish()
     }
 }

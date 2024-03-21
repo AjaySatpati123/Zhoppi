@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -60,9 +62,30 @@ class ItemViewBuyerActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<Button>(R.id.openChat).setOnClickListener{
+//        findViewById<ImageButton>(R.id.openChat).setOnClickListener{
+//
+//        }
 
+        findViewById<ImageButton>(R.id.calling).setOnClickListener {
+            if (id != null) {
+                db.collection("user").document(id).get().addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot != null) {
+                        val phoneNumber = documentSnapshot.getString("contactNo")
+                        if (!phoneNumber.isNullOrEmpty()) {
+                            // Create an implicit intent to open the dialer with the phone number
+                            val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+                            startActivity(dialIntent)
+                        } else {
+                            // Handle case when contact number is empty or null
+                            Toast.makeText(this, "Contact number not available", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
 
         findViewById<Button>(R.id.seeMore).setOnClickListener {
             val intent = Intent(this, AllProductsActivity::class.java)

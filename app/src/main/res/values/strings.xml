@@ -46,5 +46,9 @@
     <string name="see_more">See More</string>
     <string name="item_image">Item Image</string>
     <string name="chat_now">Chat Now</string>
+    <string name="placeholder">placeholder</string>
+    <string name="textview">TextView</string>
+    <string name="caller">caller</string>
+    <string name="chatting">chatting</string>
 
 </resources>

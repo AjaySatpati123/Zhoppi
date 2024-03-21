@@ -9,88 +9,116 @@
 
     <ImageView
         android:id="@+id/displayItem"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:contentDescription="@string/item_image"
         android:src="@drawable/ic_store"
+        android:background="@drawable/grayish_gradient"
         app:layout_constraintBottom_toTopOf="@+id/displayName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_margin="30dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/displayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="placeholder"
+        android:layout_marginBottom="16dp"
+        android:text="@string/placeholder"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/displayDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="30dp"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/displayDescription"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
-        android:maxLines="5"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:background="@color/light_grey"
-        android:layout_marginBottom="24dp"
         android:ems="10"
-        app:layout_constraintBottom_toTopOf="@+id/displayNegotiable"
+        android:maxLines="5"
+        app:layout_constraintBottom_toTopOf="@+id/displayPrice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
-
-    <TextView
-        android:id="@+id/displayNegotiable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:gravity="left"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/openChat"
-        app:layout_constraintEnd_toStartOf="@+id/displayPrice"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/displayPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:gravity="right"
-        android:layout_marginBottom="28dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/openChat"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:text="@string/textview"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/displayNegotiable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/openChat"
+    <TextView
+        android:id="@+id/displayNegotiable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="@string/chat_now"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/seeMore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginBottom="16dp"
+        android:text="@string/textview"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@id/seeMore">
+
+        <ImageButton
+            android:id="@+id/openChat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FF5722"
+            android:src="@drawable/ic_chat"
+            android:layout_marginEnd="10dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:contentDescription="@string/chatting" />
+
+        <ImageButton
+            android:id="@+id/calling"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#008000"
+            android:src="@drawable/ic_call"
+            style="?android:attr/buttonBarButtonStyle"
+            android:contentDescription="@string/caller" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/seeMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/see_more"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
